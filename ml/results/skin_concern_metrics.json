@@ -1,0 +1,149 @@
+{
+  "validation": {
+    "macro_precision": 0.7767169650468883,
+    "macro_recall": 0.8861832611832611,
+    "macro_f1": 0.8141277876352504,
+    "macro_roc_auc": 0.8800719650719652,
+    "macro_pr_auc": 0.8759164958952091,
+    "per_label": {
+      "acne": {
+        "threshold": 0.47,
+        "known_labels": 46,
+        "positives": 21,
+        "negatives": 25,
+        "precision": 0.8695652173913043,
+        "recall": 0.9523809523809523,
+        "f1": 0.9090909090909091,
+        "roc_auc": 0.9619047619047619,
+        "pr_auc": 0.9641235446747871
+      },
+      "pigmentation": {
+        "threshold": 0.38,
+        "known_labels": 46,
+        "positives": 13,
+        "negatives": 33,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "roc_auc": 0.8344988344988344,
+        "pr_auc": 0.6995091183326476
+      },
+      "redness": {
+        "threshold": 0.42,
+        "known_labels": 49,
+        "positives": 27,
+        "negatives": 22,
+        "precision": 0.84,
+        "recall": 0.7777777777777778,
+        "f1": 0.8076923076923077,
+        "roc_auc": 0.8198653198653199,
+        "pr_auc": 0.8771551624628777
+      },
+      "pores": {
+        "threshold": 0.4,
+        "known_labels": 54,
+        "positives": 24,
+        "negatives": 30,
+        "precision": 0.7916666666666666,
+        "recall": 0.7916666666666666,
+        "f1": 0.7916666666666666,
+        "roc_auc": 0.875,
+        "pr_auc": 0.8785722532235147
+      },
+      "wrinkles": {
+        "threshold": 0.21,
+        "known_labels": 50,
+        "positives": 33,
+        "negatives": 17,
+        "precision": 0.8823529411764706,
+        "recall": 0.9090909090909091,
+        "f1": 0.8955223880597015,
+        "roc_auc": 0.9090909090909091,
+        "pr_auc": 0.960222400782218
+      }
+    }
+  },
+  "test": {
+    "loss": 0.41444255113601686,
+    "macro_precision": 0.7750798305637014,
+    "macro_recall": 0.8099102829537612,
+    "macro_f1": 0.7797979797979797,
+    "macro_roc_auc": 0.8919498922977184,
+    "macro_pr_auc": 0.9016018701116948,
+    "per_label": {
+      "acne": {
+        "threshold": 0.47,
+        "known_labels": 38,
+        "positives": 15,
+        "negatives": 23,
+        "precision": 0.8666666666666667,
+        "recall": 0.8666666666666667,
+        "f1": 0.8666666666666667,
+        "roc_auc": 0.9130434782608696,
+        "pr_auc": 0.8607969807969809
+      },
+      "pigmentation": {
+        "threshold": 0.38,
+        "known_labels": 43,
+        "positives": 18,
+        "negatives": 25,
+        "precision": 0.5555555555555556,
+        "recall": 0.8333333333333334,
+        "f1": 0.6666666666666666,
+        "roc_auc": 0.8533333333333334,
+        "pr_auc": 0.873013534165495
+      },
+      "redness": {
+        "threshold": 0.42,
+        "known_labels": 44,
+        "positives": 28,
+        "negatives": 16,
+        "precision": 0.9090909090909091,
+        "recall": 0.7142857142857143,
+        "f1": 0.8,
+        "roc_auc": 0.8571428571428572,
+        "pr_auc": 0.9253194839779623
+      },
+      "pores": {
+        "threshold": 0.4,
+        "known_labels": 39,
+        "positives": 18,
+        "negatives": 21,
+        "precision": 0.8666666666666667,
+        "recall": 0.7222222222222222,
+        "f1": 0.7878787878787878,
+        "roc_auc": 0.8994708994708995,
+        "pr_auc": 0.894434648835738
+      },
+      "wrinkles": {
+        "threshold": 0.21,
+        "known_labels": 45,
+        "positives": 23,
+        "negatives": 22,
+        "precision": 0.6774193548387096,
+        "recall": 0.9130434782608695,
+        "f1": 0.7777777777777778,
+        "roc_auc": 0.9367588932806323,
+        "pr_auc": 0.9544447027822985
+      }
+    }
+  },
+  "gold_split_counts": {
+    "train": 357,
+    "validation": 77,
+    "test": 66
+  },
+  "labels": [
+    "acne",
+    "pigmentation",
+    "redness",
+    "pores",
+    "wrinkles"
+  ],
+  "limitations": [
+    "Gold annotations contain 500 human-reviewed images.",
+    "Unsure labels are masked during training and evaluation.",
+    "The model identifies visible cosmetic concerns rather than medical skin diseases.",
+    "No mild/moderate/severe severity labels are predicted."
+  ]
+}

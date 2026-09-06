@@ -1,0 +1,1678 @@
+{
+  "seed": 42,
+  "dataset_root": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research",
+  "total_raw_images": 2250,
+  "raw_class_counts": {
+    "Combination": 450,
+    "Dry": 450,
+    "Normal": 450,
+    "Oily": 450,
+    "Sensitive": 450
+  },
+  "raw_split_counts": {
+    "train": {
+      "Combination": 360,
+      "Dry": 360,
+      "Normal": 360,
+      "Oily": 360,
+      "Sensitive": 360
+    },
+    "validation": {
+      "Combination": 45,
+      "Dry": 45,
+      "Normal": 45,
+      "Oily": 45,
+      "Sensitive": 45
+    },
+    "test": {
+      "Combination": 45,
+      "Dry": 45,
+      "Normal": 45,
+      "Oily": 45,
+      "Sensitive": 45
+    }
+  },
+  "v1_classes": [
+    "Combination",
+    "Dry",
+    "Normal",
+    "Oily"
+  ],
+  "excluded_classes": [
+    "Sensitive"
+  ],
+  "source_family_counts": {
+    "Combination": 50,
+    "Dry": 50,
+    "Normal": 450,
+    "Oily": 50
+  },
+  "balanced_family_count_per_class": 50,
+  "processed_counts": {
+    "train": {
+      "Combination": 35,
+      "Dry": 35,
+      "Normal": 35,
+      "Oily": 35
+    },
+    "validation": {
+      "Combination": 7,
+      "Dry": 7,
+      "Normal": 7,
+      "Oily": 7
+    },
+    "test": {
+      "Combination": 8,
+      "Dry": 8,
+      "Normal": 8,
+      "Oily": 8
+    }
+  },
+  "duplicate_audit": {
+    "duplicate_group_count": 494,
+    "duplicate_file_count": 1054,
+    "cross_class_duplicate_group_count": 0
+  },
+  "records": [
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_678",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Combination\\image_678_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\001_image_678.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_764",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_764_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\002_image_764.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "acne-pustular-20",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\acne-pustular-20_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\003_acne-pustular-20.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_443",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_443 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\004_image_443.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_238",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_238_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\005_image_238.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_413",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_413 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\006_image_413.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_674",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_674_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\007_image_674.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_430",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_430 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\008_image_430.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_735",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_735_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\009_image_735.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_295",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_295_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\010_image_295.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_690",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_690_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\011_image_690.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_432",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_432 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\012_image_432.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_380",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_380 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\013_image_380.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_315",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_315 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\014_image_315.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_725",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_725_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\015_image_725.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_664",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Combination\\image_664_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\016_image_664.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_679",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_679_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\017_image_679.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_734",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_734_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\018_image_734.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "oily(15)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\oily(15)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\019_oily_15.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_662",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_662_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\020_image_662.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_285",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_285_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\021_image_285.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_686",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_686_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\022_image_686.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_738",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_738_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\023_image_738.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_284",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_284_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\024_image_284.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_685",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_685_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\025_image_685.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_757",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Combination\\image_757_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\026_image_757.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_552",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_552 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\027_image_552.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_736",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Combination\\image_736_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\028_image_736.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_683",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_683_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\029_image_683.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_283",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_283_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\030_image_283.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_431",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_431 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\031_image_431.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_763",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_763_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\032_image_763.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_680",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_680_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\033_image_680.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_397",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Combination\\image_397 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\034_image_397.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "train",
+      "family": "image_234",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_234_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Combination\\035_image_234.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "validation",
+      "family": "image_729",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_729_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Combination\\001_image_729.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "validation",
+      "family": "acne-pustular-21",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\acne-pustular-21_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Combination\\002_acne-pustular-21.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "validation",
+      "family": "image_434",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_434 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Combination\\003_image_434.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "validation",
+      "family": "image_442",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_442 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Combination\\004_image_442.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "validation",
+      "family": "acne-pustular-67",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\acne-pustular-67_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Combination\\005_acne-pustular-67.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "validation",
+      "family": "image_751",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_751_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Combination\\006_image_751.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "validation",
+      "family": "image_395",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_395 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Combination\\007_image_395.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "test",
+      "family": "image_663",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_663_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Combination\\001_image_663.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "test",
+      "family": "image_676",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_676_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Combination\\002_image_676.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "test",
+      "family": "image_727",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_727_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Combination\\003_image_727.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "test",
+      "family": "image_726",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_726_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Combination\\004_image_726.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "test",
+      "family": "image_655",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_655_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Combination\\005_image_655.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "test",
+      "family": "image_575",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_575 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Combination\\006_image_575.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "test",
+      "family": "image_290",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_290_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Combination\\007_image_290.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Combination",
+      "split": "test",
+      "family": "image_281",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Combination\\image_281_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Combination\\008_image_281.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (17)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (17)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\001_images_17.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (43)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (43)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\002_images_43.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (28)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (28)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\003_images_28.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (9)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (9)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\004_images_9.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (21)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (21)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\005_images_21.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (32)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (32)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\006_images_32.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (31)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (31)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\007_images_31.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "prendre soin d\u2019une peau s\u00e8che (2)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\Prendre soin d\u2019une peau s\u00e8che (2)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\008_prendre_soin_d_une_peau_s_che_2.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (36)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (36)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\009_images_36.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (13)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (13)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\010_images_13.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (16)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (16)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\011_images_16.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (20)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (20)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\012_images_20.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "download (2)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\download (2)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\013_download_2.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (23)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (23)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\014_images_23.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (34)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (34)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\015_images_34.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (42)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (42)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\016_images_42.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "prendre soin d\u2019une peau s\u00e8che",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\Prendre soin d\u2019une peau s\u00e8che_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\017_prendre_soin_d_une_peau_s_che.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (1)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (1)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\018_images_1.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (30)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (30)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\019_images_30.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (18)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (18)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\020_images_18.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (5)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (5)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\021_images_5.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (39)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (39)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\022_images_39.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (38)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Dry\\images (38)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\023_images_38.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (22)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Dry\\images (22)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\024_images_22.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (8)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (8)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\025_images_8.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (4)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (4)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\026_images_4.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\027_images.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (2)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (2)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\028_images_2.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (10)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (10)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\029_images_10.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (11)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (11)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\030_images_11.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (14)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (14)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\031_images_14.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (35)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Dry\\images (35)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\032_images_35.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (29)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (29)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\033_images_29.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (27)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (27)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\034_images_27.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "train",
+      "family": "images (33)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (33)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Dry\\035_images_33.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "validation",
+      "family": "dry(40)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\dry(40)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Dry\\001_dry_40.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "validation",
+      "family": "images (7)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (7)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Dry\\002_images_7.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "validation",
+      "family": "images (24)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (24)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Dry\\003_images_24.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "validation",
+      "family": "images (3)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (3)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Dry\\004_images_3.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "validation",
+      "family": "dry(32)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\dry(32)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Dry\\005_dry_32.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "validation",
+      "family": "images (19)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Dry\\images (19)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Dry\\006_images_19.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "validation",
+      "family": "istockphoto-467680200-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\istockphoto-467680200-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Dry\\007_istockphoto-467680200-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "test",
+      "family": "images (12)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (12)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Dry\\001_images_12.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "test",
+      "family": "images (15)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (15)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Dry\\002_images_15.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "test",
+      "family": "images (6)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (6)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Dry\\003_images_6.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "test",
+      "family": "images (26)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (26)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Dry\\004_images_26.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "test",
+      "family": "images (25)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Dry\\images (25)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Dry\\005_images_25.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "test",
+      "family": "images (37)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (37)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Dry\\006_images_37.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "test",
+      "family": "images (41)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Dry\\images (41)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Dry\\007_images_41.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Dry",
+      "split": "test",
+      "family": "images (40)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Dry\\images (40)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Dry\\008_images_40.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_191",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_191.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\001_image_191.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_267",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_267.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\002_image_267.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_12",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_12.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\003_image_12.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_496",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_496.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\004_image_496.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_80",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_80.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\005_image_80.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_196",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_196.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\006_image_196.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_270",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_270.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\007_image_270.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_277",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_277.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\008_image_277.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_302",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_302.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\009_image_302.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_327",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Normal\\image_327.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\010_image_327.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_396",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_396.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\011_image_396.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_483",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_483.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\012_image_483.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_383",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Normal\\image_383.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\013_image_383.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_230",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_230.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\014_image_230.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_448",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_448.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\015_image_448.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_375",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_375.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\016_image_375.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_484",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_484.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\017_image_484.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_443",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_443.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\018_image_443.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_137",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_137.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\019_image_137.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_473",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_473.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\020_image_473.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_100",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Normal\\image_100.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\021_image_100.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_325",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_325.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\022_image_325.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_403",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_403.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\023_image_403.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_61",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_61.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\024_image_61.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_490",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_490.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\025_image_490.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_261",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_261.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\026_image_261.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_263",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Normal\\image_263.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\027_image_263.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_288",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Normal\\image_288.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\028_image_288.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_87",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Normal\\image_87.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\029_image_87.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_347",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_347.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\030_image_347.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_335",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_335.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\031_image_335.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_453",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_453.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\032_image_453.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_146",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_146.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\033_image_146.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_257",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_257.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\034_image_257.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "train",
+      "family": "image_212",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_212.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Normal\\035_image_212.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "validation",
+      "family": "image_29",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_29.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Normal\\001_image_29.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "validation",
+      "family": "image_286",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Normal\\image_286.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Normal\\002_image_286.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "validation",
+      "family": "image_439",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_439.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Normal\\003_image_439.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "validation",
+      "family": "image_147",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_147.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Normal\\004_image_147.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "validation",
+      "family": "image_220",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_220.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Normal\\005_image_220.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "validation",
+      "family": "image_310",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_310.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Normal\\006_image_310.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "validation",
+      "family": "image_472",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_472.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Normal\\007_image_472.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "test",
+      "family": "image_493",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_493.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Normal\\001_image_493.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "test",
+      "family": "image_450",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_450.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Normal\\002_image_450.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "test",
+      "family": "image_434",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_434.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Normal\\003_image_434.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "test",
+      "family": "image_343",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_343.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Normal\\004_image_343.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "test",
+      "family": "image_378",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_378.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Normal\\005_image_378.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "test",
+      "family": "image_62",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Normal\\image_62.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Normal\\006_image_62.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "test",
+      "family": "image_124",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_124.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Normal\\007_image_124.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Normal",
+      "split": "test",
+      "family": "image_399",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Normal\\image_399.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Normal\\008_image_399.jpg",
+      "family_variant_count": 1
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-1497112165-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Oily\\istockphoto-1497112165-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\001_istockphoto-1497112165-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "download (1)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\download (1)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\002_download_1.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-1806512561-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-1806512561-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\003_istockphoto-1806512561-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "c9",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c9_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\004_c9.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "images",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\images_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\005_images.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "c17",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c17_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\006_c17.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "c2",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c2_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\007_c2.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(86)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(86)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\008_oily_86.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-1844221377-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-1844221377-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\009_istockphoto-1844221377-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(84)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(84)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\010_oily_84.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(89)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(89)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\011_oily_89.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(54)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(54)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\012_oily_54.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "download",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\download_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\013_download.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "c15",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c15_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\014_c15.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "c111",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c111_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\015_c111.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "c34",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c34_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\016_c34.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-1401300991-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-1401300991-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\017_istockphoto-1401300991-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-1446819788-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-1446819788-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\018_istockphoto-1446819788-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(83)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Oily\\oily(83)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\019_oily_83.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(108)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(108)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\020_oily_108.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-1445376040-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Oily\\istockphoto-1445376040-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\021_istockphoto-1445376040-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(78)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(78)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\022_oily_78.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(76)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Oily\\oily(76)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\023_oily_76.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-1528534238-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-1528534238-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\024_istockphoto-1528534238-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "c16",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c16_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\025_c16.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-1528534233-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-1528534233-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\026_istockphoto-1528534233-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-1483199891-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-1483199891-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\027_istockphoto-1483199891-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-817319014-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-817319014-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\028_istockphoto-817319014-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(51)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(51)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\029_oily_51.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "c124",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c124_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\030_c124.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "images (1)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\images (1)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\031_images_1.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(64)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Test\\Oily\\oily(64)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\032_oily_64.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "c47",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c47_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\033_c47.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "istockphoto-1297524986-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-1297524986-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\034_istockphoto-1297524986-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "train",
+      "family": "oily(85)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(85)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\train\\Oily\\035_oily_85.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "validation",
+      "family": "images (2)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\images (2)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Oily\\001_images_2.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "validation",
+      "family": "istockphoto-846675168-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-846675168-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Oily\\002_istockphoto-846675168-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "validation",
+      "family": "image_601",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\image_601 - Copy_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Oily\\003_image_601.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "validation",
+      "family": "oily(31)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(31)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Oily\\004_oily_31.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "validation",
+      "family": "istockphoto-1151145485-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Validation\\Oily\\istockphoto-1151145485-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Oily\\005_istockphoto-1151145485-612x612.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "validation",
+      "family": "oily(75)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(75)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Oily\\006_oily_75.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "validation",
+      "family": "c13",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c13_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\validation\\Oily\\007_c13.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "test",
+      "family": "oily(71)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(71)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Oily\\001_oily_71.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "test",
+      "family": "oily(88)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(88)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Oily\\002_oily_88.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "test",
+      "family": "oily(80)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(80)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Oily\\003_oily_80.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "test",
+      "family": "c86",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c86_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Oily\\004_c86.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "test",
+      "family": "oily(59)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(59)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Oily\\005_oily_59.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "test",
+      "family": "oily(56)",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\oily(56)_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Oily\\006_oily_56.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "test",
+      "family": "c7",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\c7_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Oily\\007_c7.jpg",
+      "family_variant_count": 9
+    },
+    {
+      "class": "Oily",
+      "split": "test",
+      "family": "istockphoto-828754502-612x612",
+      "source_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\raw\\skin_type\\Skin Type Identification Research\\Train\\Oily\\istockphoto-828754502-612x612_resized_resized.jpg",
+      "output_file": "C:\\Users\\Admin\\Desktop\\Beauty_Verse\\ml\\data\\processed\\skin_type_v1\\test\\Oily\\008_istockphoto-828754502-612x612.jpg",
+      "family_variant_count": 9
+    }
+  ]
+}

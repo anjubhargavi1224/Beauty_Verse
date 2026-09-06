@@ -1,0 +1,14 @@
+{
+  "class_names": [
+    "Combination",
+    "Dry",
+    "Normal",
+    "Oily"
+  ],
+  "class_to_index": {
+    "Combination": 0,
+    "Dry": 1,
+    "Normal": 2,
+    "Oily": 3
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "EfficientNet-B0",
+  "classes": [
+    "Combination",
+    "Dry",
+    "Normal",
+    "Oily"
+  ],
+  "test_images": 32,
+  "test_loss": 0.477535,
+  "accuracy": 0.875,
+  "macro_precision": 0.878472,
+  "macro_recall": 0.875,
+  "macro_f1": 0.874877,
+  "weighted_f1": 0.874877,
+  "best_validation_loss": 0.500838,
+  "dataset_note": "Beautyverse V1 uses one representative per independent source family to reduce augmentation-derived leakage."
+}
