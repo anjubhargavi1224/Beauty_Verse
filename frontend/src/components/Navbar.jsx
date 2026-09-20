@@ -81,6 +81,7 @@ const Navbar = () => {
           </div>
 
           {/* Navigation Links */}
+          <div className="flex gap-6 mt-4"><RouterLink to="/skin-analysis">Skin analysis</RouterLink><RouterLink to="/virtual-try-on">Makeup & try-on</RouterLink></div>
           <div className="flex flex-wrap justify-center space-x-8 text-gray-700 font-semibold mt-4">
             {["home", "about", "products", "scan", "features", "FAQ", "blog", "contact-us"].map((item) => (
               <ScrollLink

@@ -1807,6 +1807,8 @@ class ProductSearchService:
         }
 
 
+        search_failures = []
+
         for search_context in (
             product_searches
         ):
@@ -1818,11 +1820,16 @@ class ProductSearchService:
             )
 
 
-            raw_results = (
-                self.search_google_shopping(
-                    query
-                )
-            )
+            try:
+                raw_results = self.search_google_shopping(query)
+            except Exception as exc:
+                # Preserve other categories and never expose credential-bearing URLs.
+                failure = {"category": search_context.get("category"),
+                           "error_type": type(exc).__name__}
+                if isinstance(exc, requests.HTTPError) and exc.response is not None:
+                    failure["http_status"] = exc.response.status_code
+                search_failures.append(failure)
+                continue
 
 
             candidates = []
@@ -2059,6 +2066,9 @@ class ProductSearchService:
                     True,
             },
 
+            "status": ("unavailable" if search_failures and len(search_failures) == len(product_searches)
+                       else "partial" if search_failures else "completed"),
+            "search_failures": search_failures,
             "filter_summary":
                 filtered_counts,
 

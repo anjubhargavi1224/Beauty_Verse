@@ -22,6 +22,7 @@ import Makeupblog from "./pages/Blog/Makeupblog";
 import Dermatologyblog from "./pages/Blog/Dermatologyblog";
 import Skincareblog from "./pages/Blog/Skincareblog";
 import Questionnaire from "./pages/Questionnaire/Questionnaire";
+import VirtualTryOn from "./pages/VirtualTryOn/VirtualTryOn";
 import SkinAnalysis from "./pages/SkinAnalysis/SkinAnalysis";
 
 import Navbar from "./components/Navbar";
@@ -104,6 +105,7 @@ function App() {
           path="/skin-analysis"
           element={<SkinAnalysis />}
         />
+        <Route path="/virtual-try-on" element={<VirtualTryOn />} />
       </Routes>
 
       <ToastContainer />

@@ -1,8 +1,11 @@
+from backend.services.bounded_work import bounded_call
+from backend.services.questionnaire_profile import parse_answers, reconcile
 import cv2
 
 from fastapi import (
     FastAPI,
     File,
+    Form,
     HTTPException,
     Response,
     UploadFile,
@@ -278,7 +281,7 @@ async def analyze_face(
 
         print(
             f"Face analysis error: "
-            f"{exc}"
+            f"{type(exc).__name__}"
         )
 
 
@@ -387,7 +390,7 @@ async def analyze_skin_regions(
 
         print(
             "Region extraction error: "
-            f"{exc}"
+            f"{type(exc).__name__}"
         )
 
 
@@ -655,7 +658,7 @@ async def analyze_skin_type(
 
         print(
             "Skin type analysis error: "
-            f"{exc}"
+            f"{type(exc).__name__}"
         )
 
 
@@ -678,6 +681,8 @@ async def analyze_skin_type(
 )
 async def beautyverse_analysis(
     image: UploadFile = File(...),
+    preview_only: bool = False,
+    questionnaire: str | None = Form(None),
 ):
 
     """
@@ -701,6 +706,10 @@ async def beautyverse_analysis(
     """
 
     try:
+        try:
+            answers = parse_answers(questionnaire)
+        except ValueError as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
 
         # =================================================
         # 1. VALIDATE IMAGE
@@ -818,12 +827,28 @@ async def beautyverse_analysis(
             )
         )
 
+        questionnaire_profile, guidance_skin_type = reconcile(answers, skin_type_analysis)
+
         prediction_presentation = (
             prediction_presenter.build(
-                skin_type_analysis,
+                guidance_skin_type,
                 skin_concern_analysis,
             )
         )
+
+        # Live frames run the same ML and quality checks without generating
+        # a paid AI plan or making shopping requests for every frame.
+        if preview_only:
+            return {
+                "success": True,
+                "analysis": {
+                    "questionnaire_profile": questionnaire_profile,
+                    "capture_quality": capture_quality,
+                    "skin_type": skin_type_analysis,
+                    "skin_concerns": skin_concern_analysis,
+                    "presentation": prediction_presentation,
+                },
+            }
 
 
         # =================================================
@@ -834,12 +859,9 @@ async def beautyverse_analysis(
 
         try:
 
-            personalized_plan = (
-                ai_skincare_planner
-                .generate(
-                    skin_type_analysis,
-                    skin_concern_analysis,
-                )
+            personalized_plan = await bounded_call(
+                ai_skincare_planner.generate, guidance_skin_type, skin_concern_analysis,
+                timeout=25,
             )
 
 
@@ -847,7 +869,7 @@ async def beautyverse_analysis(
 
             print(
                 "AI skincare planner unavailable: "
-                f"{exc}"
+                f"{type(exc).__name__}"
             )
 
 
@@ -902,7 +924,7 @@ async def beautyverse_analysis(
         recommendations = (
             recommendation_engine
             .generate(
-                skin_type_analysis,
+                guidance_skin_type,
                 skin_concern_analysis,
                 personalized_plan,
             )
@@ -918,11 +940,8 @@ async def beautyverse_analysis(
 
         try:
 
-            live_products = (
-                product_search_service
-                .search_for_profile(
-                    recommendations
-                )
+            live_products = await bounded_call(
+                product_search_service.search_for_profile, recommendations, timeout=30,
             )
 
 
@@ -930,7 +949,7 @@ async def beautyverse_analysis(
 
             print(
                 "Live product search error: "
-                f"{exc}"
+                f"{type(exc).__name__}"
             )
 
 
@@ -947,12 +966,12 @@ async def beautyverse_analysis(
                 "product_count":
                     0,
 
-                "message":
-                    str(
-                        exc
-                    ),
+                "error_type": type(exc).__name__,
+                "message": "Product matching failed. See the diagnostic error type.",
             }
 
+
+        recommendations["plan_status"] = personalized_plan.get("generated_by", {}).get("status", "generated")
 
         # Attach live search results to
         # the recommendation response.
@@ -976,6 +995,7 @@ async def beautyverse_analysis(
             ),
 
             "analysis": {
+                "questionnaire_profile": questionnaire_profile,
                 "capture_quality":
                     capture_quality,
 
@@ -1027,7 +1047,7 @@ async def beautyverse_analysis(
 
         print(
             "Beautyverse analysis error: "
-            f"{exc}"
+            f"{type(exc).__name__}"
         )
 
 
@@ -1039,3 +1059,7 @@ async def beautyverse_analysis(
                 "Beautyverse analysis."
             ),
         )
+
+# Makeup routes reuse the existing models and shopping credentials.
+from backend.makeup_routes import router as makeup_router
+app.include_router(makeup_router)

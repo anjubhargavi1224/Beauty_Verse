@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Community from "./Community";
 import Testimonial from "./Testimonial";
-import user1 from "../assets/user1.jpeg";
-import user2 from "../assets/user2.jpeg";
-import user3 from "../assets/user3.jpeg";
+import user1 from "../assets/User1.jpeg";
+import user2 from "../assets/User2.jpeg";
+import user3 from "../assets/User3.jpeg";
 
 const userImages = [user1, user2, user3];
 

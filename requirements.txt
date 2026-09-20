@@ -1,0 +1,21 @@
+# BeautyVerse backend baseline
+# Python 3.12.10, 64-bit
+# Versions captured from the existing development environment.
+
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+
+# One OpenCV distribution supplies cv2.
+opencv-contrib-python==5.0.0.93
+mediapipe==1.0.1
+numpy==2.5.3
+
+torch==2.14.0
+torchvision==0.29.0
+Pillow==12.3.0
+
+python-dotenv==1.2.3
+requests==2.34.2
+pydantic==2.13.5
+google-genai==2.22.0
+python-multipart==0.0.32

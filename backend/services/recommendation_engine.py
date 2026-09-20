@@ -660,6 +660,7 @@ class RecommendationEngine:
         search_context,
         skin_type,
         detected_concerns,
+        audience=None,
     ):
 
         category = (
@@ -685,9 +686,9 @@ class RecommendationEngine:
         )
 
 
-        query_parts = [
-            category,
-        ]
+        audience = audience or {}
+        audience_term = {"Male": "for men", "Female": "for women"}.get(audience.get("gender"), "")
+        query_parts = [category, audience_term]
 
 
         if routine_requirement:
@@ -697,7 +698,7 @@ class RecommendationEngine:
             )
 
 
-        if skin_type:
+        if skin_type and skin_type != "Uncertain":
 
             query_parts.append(
                 f"{skin_type.lower()} skin"
@@ -776,6 +777,9 @@ class RecommendationEngine:
             ]
         )
 
+        if skin_type_analysis.get("uncertainty_flag", False):
+            skin_type = "Uncertain"
+
 
         (
             detected_concerns,
@@ -809,6 +813,16 @@ class RecommendationEngine:
         )
 
 
+        audience = skin_type_analysis.get("audience", {})
+        # Enforce this independently of the AI planner and its generated text.
+        if audience.get("requires_age_review"):
+            routine_search_context = []
+            ingredient_priorities = []
+            personalized_plan = {
+                "skin_profile": "Age suitability review required before selecting products for a child or teen.",
+                "routine": {"morning": [], "evening": []},
+            }
+
         product_searches = []
 
 
@@ -818,6 +832,7 @@ class RecommendationEngine:
 
             query = (
                 self.build_query(
+                    audience=audience,
                     search_context=
                         context,
 
@@ -860,6 +875,8 @@ class RecommendationEngine:
 
 
         return {
+            "audience": audience,
+            "product_selection_status": "age_review_required" if audience.get("requires_age_review") else "search_candidates_unverified",
             "based_on": {
                 "skin_type":
                     skin_type,

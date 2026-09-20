@@ -105,13 +105,26 @@ class PredictionPresenter:
             )
 
 
+        uncertain = bool(skin_type_analysis.get("uncertainty_flag")) or level == "uncertain"
+        if uncertain:
+            summary = (
+                "The model cannot reliably separate the skin types in this image. "
+                "Try another photo in even lighting. The scores below are tentative."
+            )
+
+        source = skin_type_analysis.get('source', 'image_model')
+        if source in ('self_reported', 'questionnaire_pattern'):
+            confidence_label = 'Self-reported' if source == 'self_reported' else 'Questionnaire estimate'
+            summary = f'{predicted} is the skin type used for guidance, based on your questionnaire. The image scores are a separate estimate.'
+
         return {
+            "source": source,
             "label":
-                predicted,
+                "Uncertain" if uncertain else predicted,
 
             "headline":
                 (
-                    f"{predicted} skin pattern"
+                    "Skin type needs another look" if uncertain else f"{predicted} skin pattern"
                 ),
 
             "model_score_percentage":
@@ -190,7 +203,7 @@ class PredictionPresenter:
         if status == "detected":
 
             display_status = (
-                "Detected"
+                "Possible concern"
             )
 
             short_status = (
@@ -426,6 +439,18 @@ class PredictionPresenter:
                 "benefit from another well-lit selfie."
             )
 
+        if skin_type["label"] == "Uncertain":
+            overall_summary = (
+                "Skin type could not be determined reliably from this image. "
+                + ("Possible concern signals: " + ", ".join(detected) + ". " if detected else "")
+                + ("Some concerns need another look." if review else "")
+            ).strip()
+
+
+        if skin_type.get('source') in ('self_reported', 'questionnaire_pattern'):
+            overall_summary = skin_type['summary']
+            if detected:
+                overall_summary += ' Possible image concern signals: ' + ', '.join(detected) + '.'
 
         return {
             "headline":

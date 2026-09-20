@@ -1,4 +1,6 @@
+import { useLocation, Link } from "react-router-dom";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import LiveCamera from "./LiveCamera";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
@@ -12,14 +14,21 @@ const PRODUCT_CATEGORY_ORDER = [
 ];
 
 const SkinAnalysis = () => {
+  const location = useLocation();
+  const [useQuestionnaire, setUseQuestionnaire] = useState(true);
+  const questionnaire = useQuestionnaire ? location.state?.questionnaire : null;
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
   const [analysis, setAnalysis] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState("");
+  const [inputMode, setInputMode] = useState("upload");
 
   const fileInputRef = useRef(null);
   const resultsRef = useRef(null);
+  const analysisRequest = useRef(null);
+  const [analysisStage, setAnalysisStage] = useState("");
+  useEffect(() => () => analysisRequest.current?.abort(), []);
 
   useEffect(() => {
     return () => {
@@ -33,6 +42,7 @@ const SkinAnalysis = () => {
   };
 
   const handleFile = (file) => {
+    if (isAnalyzing) return;
     resetAnalysis();
     if (!file) return;
 
@@ -58,6 +68,7 @@ const SkinAnalysis = () => {
     const nextPreview = URL.createObjectURL(file);
     setSelectedFile(file);
     setPreviewUrl(nextPreview);
+    setInputMode("upload");
   };
 
   const handleFileInput = (event) => {
@@ -81,6 +92,11 @@ const SkinAnalysis = () => {
       return;
     }
 
+    analysisRequest.current?.abort();
+    const controller = new AbortController();
+    analysisRequest.current = controller;
+    let timer = setTimeout(() => controller.abort(), 60000);
+    setAnalysisStage("Checking the photo and running skin models…");
     setIsAnalyzing(true);
     setError("");
     setAnalysis(null);
@@ -88,12 +104,14 @@ const SkinAnalysis = () => {
     try {
       const formData = new FormData();
       formData.append("image", selectedFile);
+      if (questionnaire) formData.append("questionnaire", JSON.stringify(questionnaire));
 
       const response = await fetch(
-        `${API_BASE_URL}/api/beautyverse-analysis`,
+        `${API_BASE_URL}/api/beautyverse-analysis?preview_only=true`,
         {
           method: "POST",
           body: formData,
+          signal: controller.signal,
         }
       );
 
@@ -150,6 +168,15 @@ const SkinAnalysis = () => {
       }
 
       setAnalysis(data);
+      clearTimeout(timer);
+      setAnalysisStage("Skin analysis is ready below. Preparing routine and products…");
+      timer = setTimeout(() => controller.abort(), 75000);
+      const fullResponse = await fetch(`${API_BASE_URL}/api/beautyverse-analysis`, {
+        method: "POST", body: formData, signal: controller.signal,
+      });
+      const complete = await fullResponse.json();
+      if (!fullResponse.ok || !complete.success) throw new Error("Skin results are saved below, but recommendations could not finish.");
+      setAnalysis(complete);
 
       window.setTimeout(() => {
         resultsRef.current?.scrollIntoView({
@@ -160,14 +187,17 @@ const SkinAnalysis = () => {
     } catch (err) {
       console.error("Beautyverse analysis error:", err);
       setError(
-        err.message || "Something went wrong while analysing your skin."
+        err.name === "AbortError" ? "This request took too long. Any completed skin results remain below. Check the backend terminal before retrying." : err.message || "Something went wrong while analysing your skin."
       );
     } finally {
+      clearTimeout(timer);
+      setAnalysisStage("");
       setIsAnalyzing(false);
     }
   };
 
   const removeImage = () => {
+    setUseQuestionnaire(false);
     if (previewUrl) URL.revokeObjectURL(previewUrl);
 
     setSelectedFile(null);
@@ -192,6 +222,45 @@ const SkinAnalysis = () => {
   const concernPresentation = presentation?.concerns || [];
   const recommendations = analysis?.recommendations;
   const liveProducts = recommendations?.live_products?.products || [];
+
+  const productMessage = recommendations?.product_selection_status === "age_review_required"
+    ? "Automatic product selection is paused for this child or teen because age suitability has not been verified."
+    : recommendations?.plan_status === "temporarily_unavailable"
+      ? "The routine generator is unavailable, so it could not prepare product searches."
+      : recommendations?.live_products?.status === "unavailable"
+        ? "Product search is unavailable. Your image analysis completed, but shopping results could not be retrieved."
+        : !recommendations?.product_searches?.length
+          ? "No product searches were generated for this analysis."
+          : "No products survived the current search and matching filters.";
+
+  const downloadDiagnostics = () => {
+    // Explicit fields only: no image bytes, API keys, or provider error URLs.
+    const report = {
+      schema_version: 1,
+      analysis: {
+        capture_quality: captureQuality,
+        skin_type: rawSkinType,
+        skin_concerns: analysis?.analysis?.skin_concerns,
+        questionnaire_profile: analysis?.analysis?.questionnaire_profile,
+      },
+      recommendations: {
+        plan_status: recommendations?.plan_status,
+        product_selection_status: recommendations?.product_selection_status,
+        search_count: recommendations?.product_searches?.length || 0,
+        shopping_status: recommendations?.live_products?.status,
+        product_count: liveProducts.length,
+        filtered_counts: recommendations?.live_products?.filter_summary,
+        search_failures: recommendations?.live_products?.search_failures,
+        error_type: recommendations?.live_products?.error_type,
+      },
+    };
+    const url = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2)], { type: "application/json" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `beautyverse-diagnostics-${Date.now()}.json`;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
 
   const groupedProducts = useMemo(() => {
     const groups = {};
@@ -245,7 +314,7 @@ const SkinAnalysis = () => {
 
             <div className="lg:pb-2">
               <p className="max-w-xl text-base md:text-lg text-stone-600 leading-relaxed">
-                Upload one clear selfie. Beautyverse combines facial
+                Upload a selfie or use live camera analysis. Beautyverse combines facial
                 localisation, image-quality checks, trained skin-analysis
                 models and dynamic skincare planning to build a cosmetic skin
                 profile and routine.
@@ -268,7 +337,25 @@ const SkinAnalysis = () => {
               onDragOver={handleDragOver}
               className="rounded-[32px] bg-white border border-stone-200 p-5 md:p-7 shadow-[0_20px_70px_rgba(28,25,23,0.05)]"
             >
-              {!previewUrl ? (
+              <div className="mb-5 rounded-2xl bg-stone-50 p-4 text-sm">
+                {questionnaire ? <>
+                  <p>Questionnaire attached. Self-reported skin type: <strong>{questionnaire.skinType}</strong>.</p>
+                  <p>Use these answers only for the person in the photo. No visual concerns are confirmed by this questionnaire.</p>
+                  <button type="button" disabled={isAnalyzing} className="mt-2 underline"
+                    onClick={() => { setUseQuestionnaire(false); resetAnalysis(); }}>Remove questionnaire</button>
+                </> : <p><Link className="underline" to="/questionnaire">Complete the existing questionnaire</Link> to include your answers. You can also analyze a photo without it.</p>}
+              </div>
+              <div className="mb-5 flex gap-3" aria-label="Choose image source">
+                <button type="button" disabled={isAnalyzing} aria-pressed={inputMode === "upload"}
+                  onClick={() => setInputMode("upload")}
+                  className={`rounded-full px-5 py-3 ${inputMode === "upload" ? "bg-stone-900 text-white" : "bg-stone-100"}`}>Upload photo</button>
+                <button type="button" disabled={isAnalyzing} aria-pressed={inputMode === "camera"}
+                  onClick={() => { resetAnalysis(); setInputMode("camera"); }}
+                  className={`rounded-full px-5 py-3 ${inputMode === "camera" ? "bg-stone-900 text-white" : "bg-stone-100"}`}>Live camera</button>
+              </div>
+              {inputMode === "camera" ? (
+                <LiveCamera key={JSON.stringify(questionnaire || null)} apiBaseUrl={API_BASE_URL} onCapture={handleFile} disabled={isAnalyzing} questionnaire={questionnaire} />
+              ) : !previewUrl ? (
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
@@ -357,9 +444,9 @@ const SkinAnalysis = () => {
               <button
                 type="button"
                 onClick={analyzeSkin}
-                disabled={!selectedFile || isAnalyzing}
+                disabled={!selectedFile || isAnalyzing || inputMode === "camera"}
                 className={`mt-5 w-full rounded-full py-4 font-semibold transition ${
-                  !selectedFile || isAnalyzing
+                  !selectedFile || isAnalyzing || inputMode === "camera"
                     ? "cursor-not-allowed bg-stone-200 text-stone-400"
                     : "bg-[#1d1b19] text-white hover:bg-black"
                 }`}
@@ -415,7 +502,23 @@ const SkinAnalysis = () => {
         </div>
       </section>
 
-      {isAnalyzing && (
+      {isAnalyzing && <p role="status" className="max-w-7xl mx-auto px-6 py-4">{analysisStage}</p>}
+      {analysis?.success && <div className="max-w-7xl mx-auto px-6 py-4"><Link className="text-purple-700 underline font-semibold" to="/virtual-try-on" state={{ skinAnalysis: analysis.analysis }}>Continue to makeup & virtual try-on</Link></div>}
+      {analysis?.analysis?.questionnaire_profile && (
+        <section className="mx-auto mb-8 max-w-7xl rounded-2xl border border-stone-200 bg-white p-6" aria-label="Questionnaire and image comparison">
+          <h2 className="text-xl font-semibold">Skin type for guidance: {analysis.analysis.questionnaire_profile.skin_type_for_guidance}</h2>
+          <p className="mt-2">Self-reported: {analysis.analysis.questionnaire_profile.self_reported_skin_type}</p>
+          <p className="mt-2">{analysis.analysis.questionnaire_profile.message}</p>
+          <p className="mt-2 text-sm">{analysis.analysis.questionnaire_profile.note}</p>
+          {analysis.analysis.questionnaire_profile.audience && <p className="mt-2 text-sm">
+            Product audience (from questionnaire): {analysis.analysis.questionnaire_profile.audience.gender}, {analysis.analysis.questionnaire_profile.audience.age_group}.
+            {analysis.analysis.questionnaire_profile.audience.requires_age_review
+              ? " Automatic product recommendations are withheld until age suitability can be verified for this child or teen."
+              : " Product searches use this audience; retailer results still need suitability checks."}
+          </p>}
+        </section>
+      )}
+      {isAnalyzing && !analysis && (
         <section className="px-5 sm:px-6 md:px-10 lg:px-16 pb-16">
           <div className="max-w-7xl mx-auto">
             <div className="rounded-[32px] border border-stone-200 bg-white p-8 md:p-12">
@@ -455,7 +558,7 @@ const SkinAnalysis = () => {
         </section>
       )}
 
-      {analysis && !isAnalyzing && (
+      {analysis && (
         <section
           ref={resultsRef}
           className="px-5 sm:px-6 md:px-10 lg:px-16 pb-24 scroll-mt-8"
@@ -759,6 +862,16 @@ const SkinAnalysis = () => {
                 </div>
               </section>
             )}
+
+            {liveProducts.length === 0 && (
+              <section className="mt-12 rounded-2xl border border-stone-200 bg-white p-6" role="status">
+                <h2 className="text-xl font-semibold">Products are not available</h2>
+                <p className="mt-3 text-stone-600">{productMessage}</p>
+              </section>
+            )}
+            <button type="button" onClick={downloadDiagnostics} className="mt-6 rounded-xl border border-stone-300 px-5 py-3">
+              Download analysis diagnostics
+            </button>
 
             {liveProducts.length > 0 && (
               <section className="mt-16">

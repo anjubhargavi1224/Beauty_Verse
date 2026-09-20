@@ -1,11 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import BeautyverseLoader from "../../components/BeautyverseLoader";
 
 const questions = [
   { id: "gender", question: "What Is Your Gender?", options: ["Male", "Female"] },
-  { id: "age", question: "What Is Your Age Group?", options: ["Teen", "20s", "30s", "40+"] },
-  { id: "skinType", question: "What Is Your Skin Type?", options: ["Oily", "Dry", "Combination", "Normal"] },
+  { id: "age", question: "What Is Your Age Group?", options: ["Child (under 13)", "Teen", "20s", "30s", "40+"] },
+  { id: "skinType", question: "What Is Your Skin Type?", options: ["Oily", "Dry", "Combination", "Normal", "Not sure"] },
   { id: "sensitivity", question: "Is Your Skin Sensitive?", options: ["Yes", "No"] },
   { id: "skinIssues", question: "Do You Have Any Skin Issues?", options: ["Acne", "Dark Spots", "Wrinkles", "None"] },
   { id: "hydration", question: "How Does Your Skin Feel Most of the Time?", options: ["Oily", "Dry", "Balanced"] },
@@ -21,6 +22,7 @@ const questions = [
 ];
 
 export default function Questionnaire() {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -30,6 +32,7 @@ export default function Questionnaire() {
   const progressPercentage = (currentStep / (totalQuestions - 1)) * 100;
 
   const handleNext = () => {
+    if (!answers[questions[currentStep].id]) return;
     if (currentStep < totalQuestions - 1) {
       setCurrentStep(currentStep + 1);
     } else {
@@ -49,31 +52,9 @@ export default function Questionnaire() {
   };
 
   const determineSkinType = () => {
-    let skinType = "Normal";
-    let skinCondition = "Healthy";
-
-    const oilyIndicators = ["Oily", "Large", "Yes", "Often"];
-    const dryIndicators = ["Dry", "Tight", "Rarely"];
-    const sensitiveIndicators = ["Sensitive", "Yes"];
-    const acneIndicators = ["Acne", "Breakouts", "Often"];
-
-    const answerValues = Object.values(answers);
-
-    if (oilyIndicators.some((val) => answerValues.includes(val))) {
-      skinType = "Oily";
-    } else if (dryIndicators.some((val) => answerValues.includes(val))) {
-      skinType = "Dry";
-    } else if (answerValues.includes("Balanced") && answerValues.includes("Combination")) {
-      skinType = "Combination";
-    }
-
-    if (sensitiveIndicators.some((val) => answerValues.includes(val))) {
-      skinCondition = "Sensitive";
-    } else if (acneIndicators.some((val) => answerValues.includes(val))) {
-      skinCondition = "Acne-Prone";
-    } else if (answerValues.includes("Aging")) {
-      skinCondition = "Aging";
-    }
+    const skinType = answers.skinType || "Not sure";
+    const skinCondition = answers.sensitivity === "Yes" || answers.products === "Sensitive"
+      ? "Sensitivity reported" : "Sensitivity not reported";
 
     setResult({ skinType, skinCondition });
   };
@@ -134,11 +115,19 @@ export default function Questionnaire() {
         <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md text-center">
           <h2 className="text-2xl font-bold text-blue-600">Thank You!</h2>
           <p className="mt-4 text-lg">
-            Your Skin Type: <strong>{result.skinType}</strong>
+            Your self-reported skin type: <strong>{result.skinType}</strong>
           </p>
           <p className="text-lg">
-            Your Skin Condition: <strong>{result.skinCondition}</strong>
+            Questionnaire answer: <strong>{result.skinCondition}</strong>
           </p>
+          <p className="mt-3 text-sm text-gray-600">These are your answers, not a medical assessment. Use them with your next photo analysis.</p>
+          <button className="mt-5 rounded bg-blue-600 px-5 py-3 text-white"
+            onClick={() => navigate("/skin-analysis", { state: { questionnaire: answers } })}>
+            Continue to photo or live camera
+          </button>
+          <button className="mt-3 block w-full text-blue-600" onClick={() => { setSubmitted(false); setCurrentStep(0); }}>
+            Review answers
+          </button>
         </div>
       )}
 
@@ -156,6 +145,7 @@ export default function Questionnaire() {
           </button>
           <button
             className="p-3 px-6 rounded-lg text-white bg-blue-500 hover:bg-blue-600"
+            disabled={!answers[questions[currentStep].id]}
             onClick={handleNext}
           >
             {currentStep === totalQuestions - 1 ? "Submit" : "Next"}

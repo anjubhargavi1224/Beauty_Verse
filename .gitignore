@@ -13,3 +13,11 @@ node_modules/
 # ML datasets
 ml/data/raw/
 ml/data/processed/
+
+# Backups and temporary evaluation/patch artifacts
+beautyverse_demo_backup_*/
+beautyverse_crop_check_*/
+beautyverse_focused_check_*/
+BeautyVerse_*/
+*.zip
+beautyverse_*.json

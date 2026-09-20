@@ -164,6 +164,9 @@ class AISkincarePlanner:
             )
         )
 
+        if skin_type_analysis.get("uncertainty_flag", False):
+            skin_type = "Uncertain"
+
 
         skin_type_uncertain = (
             skin_type_analysis.get(
@@ -243,6 +246,10 @@ class AISkincarePlanner:
             "skin_type":
                 skin_type,
 
+            "audience": skin_type_analysis.get("audience", {}),
+
+            "skin_type_source": skin_type_analysis.get("source", "image_model"),
+
             "skin_type_confidence_percentage":
                 skin_type_confidence,
 
@@ -283,6 +290,12 @@ CURRENT ANALYSIS:
 IMPORTANT PERSONALIZATION RULES:
 
 1. Base the plan on THIS analysis only.
+   Audience gender and age are questionnaire answers, never inferred from the image.
+   Use the stated gender for product shopping preferences only; do not infer skin
+   type, sensitivity, ingredients, pregnancy, or shaving habits from gender.
+   Without an audience, use gender-neutral wording.
+   When skin_type_source is self_reported, describe it as the user's reported
+   type. Never claim the image confirmed it or invent a confidence score.
 
 2. Confidently detected concerns may directly influence
    ingredients, goals, routine steps and avoid-or-limit
@@ -296,7 +309,10 @@ IMPORTANT PERSONALIZATION RULES:
 4. Concerns marked not_detected must NOT be used as
    reasons to introduce targeted actives.
 
-5. The predicted skin type must influence:
+5. When skin_type_uncertain is true or skin_type is Uncertain, do not
+   infer a skin type or tailor products to the top scoring class.
+   Use a general gentle routine and suggest reassessment.
+   Otherwise the predicted skin type must influence:
    - texture preferences
    - hydration level
    - cleansing style
@@ -372,6 +388,15 @@ Generate the final personalized Beautyverse skincare plan.
         skin_type_analysis,
         skin_concern_analysis,
     ):
+
+        if skin_type_analysis.get("audience", {}).get("requires_age_review"):
+            return {
+                "skin_profile": "Product selection for children and teens requires age suitability review. Automatic adult routines are withheld.",
+                "skin_goals": [], "concern_goals": [],
+                "recommended_ingredients": [], "avoid_or_limit": [],
+                "routine": {"morning": [], "evening": []},
+                "generated_by": {"provider": "BeautyVerse", "status": "age_review_required"},
+            }
 
         profile = self._build_profile(
             skin_type_analysis,
