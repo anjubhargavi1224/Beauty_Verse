@@ -652,8 +652,71 @@ class RecommendationEngine:
 
 
     # =====================================================
-    # QUERY GENERATION
+    # QUERY GENERATION (TIERED FALLBACK HIERARCHY)
     # =====================================================
+
+    def build_tiered_queries(
+        self,
+        search_context,
+        skin_type,
+        detected_concerns,
+        audience=None,
+        skin_tone=None,
+    ):
+        category = search_context.get("category", "").strip()
+        desired_ingredients = search_context.get("desired_ingredients", [])
+        routine_requirement = search_context.get("routine_requirement", "")
+        audience = audience or {}
+        audience_term = {"Male": "for men", "Female": "for women"}.get(audience.get("gender"), "")
+
+        # Extract primary active or concise descriptor
+        primary_descriptor = ""
+        if desired_ingredients:
+            primary_descriptor = str(desired_ingredients[0]).strip()
+        elif routine_requirement:
+            low_req = routine_requirement.lower()
+            if "cleanser" in low_req or "cleansing" in low_req or "wash" in low_req:
+                primary_descriptor = "gentle face wash"
+            elif "barrier" in low_req or "ceramide" in low_req or "recovery" in low_req:
+                primary_descriptor = "barrier recovery cream"
+            elif "spf" in low_req or "sunscreen" in low_req:
+                primary_descriptor = "SPF 50"
+            elif "serum" in low_req:
+                primary_descriptor = "antioxidant serum"
+            elif "treatment" in low_req:
+                primary_descriptor = "corrective treatment"
+
+        skin_type_term = f"{skin_type.lower()} skin" if skin_type and skin_type != "Uncertain" else ""
+        primary_concern = detected_concerns[0].replace("_", " ") if detected_concerns else ""
+
+        # Tone optimization for sunscreen
+        tone_opt = ""
+        if category == "sunscreen" and skin_tone:
+            fitzpatrick = skin_tone.get("fitzpatrick_scale") if isinstance(skin_tone, dict) else ""
+            if fitzpatrick in ("Type IV", "Type V", "Type VI"):
+                tone_opt = "no white cast"
+
+        # Level 1: Highly personalized (concise product descriptor + skin type + primary concern + tone)
+        parts_l1 = [category, audience_term, primary_descriptor, skin_type_term, primary_concern, tone_opt, "India"]
+        l1 = re.sub(r"\s+", " ", " ".join(p for p in parts_l1 if p)).strip()
+
+        # Level 2: Broader skin-type + concern query
+        parts_l2 = [category, audience_term, skin_type_term, primary_concern, tone_opt, "India"]
+        l2 = re.sub(r"\s+", " ", " ".join(p for p in parts_l2 if p)).strip()
+
+        # Level 3: Broader product-category query
+        parts_l3 = [category, audience_term, skin_type_term, tone_opt, "India"]
+        l3 = re.sub(r"\s+", " ", " ".join(p for p in parts_l3 if p)).strip()
+
+        queries = []
+        for q in [l1, l2, l3]:
+            if q and q not in queries:
+                # Keep external shopping query manageable.
+                if len(q) > 160:
+                    q = q[:160].rsplit(" ", 1)[0]
+                queries.append(q)
+
+        return queries
 
     def build_query(
         self,
@@ -661,103 +724,16 @@ class RecommendationEngine:
         skin_type,
         detected_concerns,
         audience=None,
+        skin_tone=None,
     ):
-
-        category = (
-            search_context[
-                "category"
-            ]
+        queries = self.build_tiered_queries(
+            search_context=search_context,
+            skin_type=skin_type,
+            detected_concerns=detected_concerns,
+            audience=audience,
+            skin_tone=skin_tone,
         )
-
-
-        routine_requirement = (
-            search_context.get(
-                "routine_requirement",
-                "",
-            )
-        )
-
-
-        desired_ingredients = (
-            search_context.get(
-                "desired_ingredients",
-                [],
-            )
-        )
-
-
-        audience = audience or {}
-        audience_term = {"Male": "for men", "Female": "for women"}.get(audience.get("gender"), "")
-        query_parts = [category, audience_term]
-
-
-        if routine_requirement:
-
-            query_parts.append(
-                routine_requirement
-            )
-
-
-        if skin_type and skin_type != "Uncertain":
-
-            query_parts.append(
-                f"{skin_type.lower()} skin"
-            )
-
-
-        if detected_concerns:
-
-            query_parts.append(
-                " ".join(
-                    detected_concerns
-                )
-            )
-
-
-        if desired_ingredients:
-
-            query_parts.append(
-                " ".join(
-                    desired_ingredients
-                )
-            )
-
-
-        query_parts.extend(
-            [
-                "skincare",
-                "India",
-            ]
-        )
-
-
-        query = " ".join(
-            query_parts
-        )
-
-
-        query = re.sub(
-            r"\s+",
-            " ",
-            query,
-        ).strip()
-
-
-        # Keep external shopping query manageable.
-
-        if len(
-            query
-        ) > 220:
-
-            query = query[
-                :220
-            ].rsplit(
-                " ",
-                1
-            )[0]
-
-
-        return query
+        return queries[0] if queries else search_context.get("category", "")
 
 
     # =====================================================
@@ -769,6 +745,7 @@ class RecommendationEngine:
         skin_type_analysis,
         skin_concern_analysis,
         personalized_plan,
+        skin_tone=None,
     ):
 
         skin_type = (
@@ -776,10 +753,6 @@ class RecommendationEngine:
                 "predicted_skin_type"
             ]
         )
-
-        if skin_type_analysis.get("uncertainty_flag", False):
-            skin_type = "Uncertain"
-
 
         (
             detected_concerns,
@@ -825,49 +798,36 @@ class RecommendationEngine:
 
         product_searches = []
 
-
-        for context in (
-            routine_search_context
-        ):
-
-            query = (
-                self.build_query(
-                    audience=audience,
-                    search_context=
-                        context,
-
-                    skin_type=
-                        skin_type,
-
-                    detected_concerns=
-                        detected_concerns,
-                )
+        for context in routine_search_context:
+            tiered_queries = self.build_tiered_queries(
+                audience=audience,
+                search_context=context,
+                skin_type=skin_type,
+                detected_concerns=detected_concerns,
+                skin_tone=skin_tone,
             )
-
+            query = tiered_queries[0] if tiered_queries else context.get("category", "")
+            fallback_queries = tiered_queries[1:] if len(tiered_queries) > 1 else []
 
             search_record = {
                 **context,
-
-                "query":
-                    query,
-
-                "amazon_search_url":
-                    (
-                        "https://www.amazon.in/s?k="
-                        +
-                        quote_plus(
-                            query
-                        )
-                    ),
+                "query": query,
+                "fallback_queries": fallback_queries,
+                "amazon_search_url": (
+                    "https://www.amazon.in/s?k="
+                    + quote_plus(query)
+                ),
+                "nykaa_search_url": (
+                    "https://www.nykaa.com/search/result/?q="
+                    + quote_plus(query)
+                ),
             }
-
 
             # original_order is internal only.
             search_record.pop(
                 "original_order",
                 None,
             )
-
 
             product_searches.append(
                 search_record
@@ -894,6 +854,9 @@ class RecommendationEngine:
 
                 "not_detected_concerns":
                     not_detected_concerns,
+
+                "skin_tone":
+                    skin_tone,
             },
 
 

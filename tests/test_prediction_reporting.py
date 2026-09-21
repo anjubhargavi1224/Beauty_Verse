@@ -5,14 +5,20 @@ from ml.evaluation.evaluate_selfies import LABELS, summarize
 
 
 class PredictionReportingTests(unittest.TestCase):
-    def test_uncertain_skin_type_is_not_presented_as_combination(self):
+    def test_calibrated_skin_type_is_presented_without_uncertain_label(self):
         result = PredictionPresenter().build({
-            "predicted_skin_type": "Combination", "uncertainty_flag": True,
-            "confidence_level": "uncertain", "probabilities": [],
+            "predicted_skin_type": "Combination",
+            "uncertainty_flag": False,
+            "confidence_level": "calibrated_best_match",
+            "confidence_percentage": 52.0,
+            "probabilities": [
+                {"skin_type": "Combination", "percentage": 52.0},
+                {"skin_type": "Normal", "percentage": 30.0},
+            ],
         }, {"concerns": []})
-        self.assertEqual(result["skin_type"]["label"], "Uncertain")
-        self.assertNotIn("matches Uncertain skin", result["summary"])
-        self.assertNotIn("Combination skin", result["skin_type"]["headline"])
+        self.assertEqual(result["skin_type"]["label"], "Combination")
+        self.assertNotIn("Uncertain", result["skin_type"]["label"])
+        self.assertIn("Combination", result["skin_type"]["headline"])
 
     def test_empty_evaluation_does_not_claim_perfect_accuracy(self):
         result = summarize([])

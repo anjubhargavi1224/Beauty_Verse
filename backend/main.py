@@ -43,6 +43,10 @@ from backend.services.ai_skincare_planner import (
     ai_skincare_planner,
 )
 
+from backend.services.skin_tone_estimator import (
+    skin_tone_estimator,
+)
+
 from backend.services.prediction_presenter import (
     prediction_presenter,
 )
@@ -607,14 +611,22 @@ async def analyze_skin_type(
             }
 
 
-        prediction = (
-            skin_type_classifier_service
-            .predict(
+        skin_tone_analysis = (
+            skin_tone_estimator
+            .estimate(
                 cv_image,
                 landmarks,
             )
         )
 
+        prediction = (
+            skin_type_classifier_service
+            .predict(
+                cv_image,
+                landmarks,
+                regional_summary=region_result.get("regional_summary"),
+            )
+        )
 
         return {
             "success":
@@ -631,10 +643,16 @@ async def analyze_skin_type(
             "skin_type_analysis":
                 prediction,
 
+            "skin_tone_analysis":
+                skin_tone_analysis,
+
             "skin_regions":
                 region_result[
                     "regions"
                 ],
+
+            "regional_summary":
+                region_result.get("regional_summary"),
         }
 
 
@@ -803,12 +821,12 @@ async def beautyverse_analysis(
 
 
         # =================================================
-        # 4. SKIN TYPE
+        # 4. SKIN TONE & COMPLEXION
         # =================================================
 
-        skin_type_analysis = (
-            skin_type_classifier_service
-            .predict(
+        skin_tone_analysis = (
+            skin_tone_estimator
+            .estimate(
                 cv_image,
                 landmarks,
             )
@@ -816,7 +834,21 @@ async def beautyverse_analysis(
 
 
         # =================================================
-        # 5. SKIN CONCERNS
+        # 5. SKIN TYPE WITH REGIONAL FUSION
+        # =================================================
+
+        skin_type_analysis = (
+            skin_type_classifier_service
+            .predict(
+                cv_image,
+                landmarks,
+                regional_summary=region_result.get("regional_summary"),
+            )
+        )
+
+
+        # =================================================
+        # 6. REGION-AWARE SKIN CONCERNS
         # =================================================
 
         skin_concern_analysis = (
@@ -824,6 +856,7 @@ async def beautyverse_analysis(
             .predict(
                 cv_image,
                 landmarks,
+                regions_data=region_result,
             )
         )
 
@@ -833,6 +866,8 @@ async def beautyverse_analysis(
             prediction_presenter.build(
                 guidance_skin_type,
                 skin_concern_analysis,
+                skin_tone_analysis=skin_tone_analysis,
+                regional_summary=region_result.get("regional_summary"),
             )
         )
 
@@ -845,23 +880,27 @@ async def beautyverse_analysis(
                     "questionnaire_profile": questionnaire_profile,
                     "capture_quality": capture_quality,
                     "skin_type": skin_type_analysis,
+                    "skin_tone": skin_tone_analysis,
                     "skin_concerns": skin_concern_analysis,
                     "presentation": prediction_presentation,
+                    "skin_regions": region_result["regions"],
+                    "regional_summary": region_result.get("regional_summary"),
                 },
             }
 
 
         # =================================================
-        # 6. DYNAMIC AI SKINCARE PLAN
-        #
-        # Gemini failure must NOT crash the ML analysis.
+        # 7. DYNAMIC AI SKINCARE PLAN
         # =================================================
 
         try:
 
             personalized_plan = await bounded_call(
-                ai_skincare_planner.generate, guidance_skin_type, skin_concern_analysis,
-                timeout=25,
+                ai_skincare_planner.generate,
+                guidance_skin_type,
+                skin_concern_analysis,
+                skin_tone_analysis,
+                timeout=15,
             )
 
 
@@ -869,52 +908,15 @@ async def beautyverse_analysis(
 
             print(
                 "AI skincare planner unavailable: "
-                f"{type(exc).__name__}"
+                f"{type(exc).__name__}. Using deterministic expert planner."
             )
 
-
-            # IMPORTANT:
-            # This does NOT invent a static routine.
-            #
-            # If Gemini is unavailable, the app simply
-            # reports that personalization could not
-            # currently be generated.
-
-            personalized_plan = {
-                "skin_profile": (
-                    "Personalized AI skincare "
-                    "planning is temporarily "
-                    "unavailable."
-                ),
-
-                "skin_goals":
-                    [],
-
-                "concern_goals":
-                    [],
-
-                "recommended_ingredients":
-                    [],
-
-                "avoid_or_limit":
-                    [],
-
-                "routine": {
-                    "morning":
-                        [],
-
-                    "evening":
-                        [],
-                },
-
-                "generated_by": {
-                    "provider":
-                        "Google Gemini",
-
-                    "status":
-                        "temporarily_unavailable",
-                },
-            }
+            profile = ai_skincare_planner._build_profile(
+                guidance_skin_type or {},
+                skin_concern_analysis or {},
+                skin_tone_analysis or {},
+            )
+            personalized_plan = ai_skincare_planner._generate_deterministic_plan(profile)
 
 
         # =================================================
@@ -927,9 +929,11 @@ async def beautyverse_analysis(
                 guidance_skin_type,
                 skin_concern_analysis,
                 personalized_plan,
+                skin_tone=skin_tone_analysis,
             )
         )
-
+        recommendations["regional_evidence"] = skin_type_analysis.get("regional_evidence", {})
+        recommendations["skin_tone"] = skin_tone_analysis
 
         # =================================================
         # 8. LIVE PRODUCT SEARCH
@@ -1002,6 +1006,9 @@ async def beautyverse_analysis(
                 "skin_type":
                     skin_type_analysis,
 
+                "skin_tone":
+                    skin_tone_analysis,
+
                 "skin_concerns":
                     skin_concern_analysis,
 
@@ -1012,6 +1019,9 @@ async def beautyverse_analysis(
                     region_result[
                         "regions"
                     ],
+
+                "regional_summary":
+                    region_result.get("regional_summary"),
             },
 
             "recommendations":

@@ -1,70 +1,89 @@
+from __future__ import annotations
+
+from typing import Any, Dict, List, Tuple
 import cv2
 import numpy as np
 
 
 class SkinRegionService:
     """
-    Extract cosmetic skin-analysis regions using
-    MediaPipe facial landmarks.
+    Extract cosmetic skin-analysis regions and deep regional metrics
+    using MediaPipe facial landmarks.
 
-    This service performs image preprocessing only.
+    Extracts:
+    - Forehead (T-Zone)
+    - Nose (T-Zone)
+    - Left Cheek (U-Zone)
+    - Right Cheek (U-Zone)
+    - Chin (U-Zone)
+    - Under Eye (Periorbital zone for fine lines / dark circles)
+
+    This service performs cosmetic image preprocessing only.
     It does NOT perform medical diagnosis.
     """
 
     REGION_CONFIG = {
         "forehead": {
             "anchor": 10,
-            "width": 0.22,
-            "height": 0.13,
+            "width": 0.24,
+            "height": 0.14,
             "x_offset": 0.0,
             "y_offset": 0.07,
+            "zone": "tzone",
         },
-
+        "nose": {
+            "anchor": 1,
+            "width": 0.14,
+            "height": 0.14,
+            "x_offset": 0.0,
+            "y_offset": -0.015,
+            "zone": "tzone",
+        },
         "left_cheek": {
             "anchor": 205,
             "width": 0.20,
             "height": 0.17,
             "x_offset": 0.0,
             "y_offset": 0.0,
+            "zone": "uzone",
         },
-
         "right_cheek": {
             "anchor": 425,
             "width": 0.20,
             "height": 0.17,
             "x_offset": 0.0,
             "y_offset": 0.0,
+            "zone": "uzone",
         },
-
-        "nose": {
-            "anchor": 1,
-            "width": 0.12,
-            "height": 0.13,
-            "x_offset": 0.0,
-            "y_offset": -0.015,
-        },
-
         "chin": {
             "anchor": 152,
             "width": 0.20,
             "height": 0.12,
             "x_offset": 0.0,
             "y_offset": -0.075,
+            "zone": "uzone",
+        },
+        "under_eye": {
+            "anchor": 230,
+            "width": 0.22,
+            "height": 0.09,
+            "x_offset": 0.0,
+            "y_offset": 0.02,
+            "zone": "periorbital",
         },
     }
 
     def _calculate_face_bounds(
         self,
-        landmarks,
-        width,
-        height,
-    ):
+        landmarks: List[Any],
+        width: int,
+        height: int,
+    ) -> Tuple[int, int, int, int]:
         xs = [landmark.x for landmark in landmarks]
         ys = [landmark.y for landmark in landmarks]
 
         x1 = int(max(0.0, min(xs)) * width)
         y1 = int(max(0.0, min(ys)) * height)
-
         x2 = int(min(1.0, max(xs)) * width)
         y2 = int(min(1.0, max(ys)) * height)
 
@@ -72,13 +91,11 @@ class SkinRegionService:
 
     def _calculate_capture_quality(
         self,
-        face_crop,
-    ):
+        face_crop: np.ndarray,
+    ) -> Dict[str, Any]:
         """
-        Evaluate the overall photograph rather than
-        using smooth skin patches to determine blur.
+        Evaluate photograph capture quality across the facial crop.
         """
-
         if face_crop.size == 0:
             return {
                 "brightness": 0.0,
@@ -91,18 +108,11 @@ class SkinRegionService:
                 "usable": False,
             }
 
-        gray = cv2.cvtColor(
-            face_crop,
-            cv2.COLOR_BGR2GRAY,
-        )
-
-        # Normalize image dimensions so focus measurements
-        # are more consistent across different camera sizes.
+        gray = cv2.cvtColor(face_crop, cv2.COLOR_BGR2GRAY)
         target_width = 500
 
         if gray.shape[1] > target_width:
             scale = target_width / gray.shape[1]
-
             gray = cv2.resize(
                 gray,
                 None,
@@ -111,46 +121,25 @@ class SkinRegionService:
                 interpolation=cv2.INTER_AREA,
             )
 
-        brightness = float(
-            np.mean(gray)
-        )
+        brightness = float(np.mean(gray))
+        contrast = float(np.std(gray))
+        laplacian_variance = float(cv2.Laplacian(gray, cv2.CV_64F).var())
 
-        contrast = float(
-            np.std(gray)
-        )
+        overexposed = float(np.mean(gray >= 245) * 100)
+        underexposed = float(np.mean(gray <= 20) * 100)
 
-        laplacian_variance = float(
-            cv2.Laplacian(
-                gray,
-                cv2.CV_64F,
-            ).var()
-        )
-
-        overexposed = float(
-            np.mean(gray >= 245) * 100
-        )
-
-        underexposed = float(
-            np.mean(gray <= 20) * 100
-        )
-
-        if brightness < 55:
+        if brightness < 50:
             lighting_status = "too_dark"
-
-        elif brightness > 220:
+        elif brightness > 225:
             lighting_status = "too_bright"
-
-        elif overexposed > 15:
+        elif overexposed > 18:
             lighting_status = "overexposed"
-
-        elif underexposed > 15:
+        elif underexposed > 18:
             lighting_status = "underexposed"
-
         else:
             lighting_status = "acceptable"
 
-        # This is intentionally evaluated on the full face.
-        if laplacian_variance < 30:
+        if laplacian_variance < 25:
             focus_status = "possibly_blurry"
         else:
             focus_status = "acceptable"
@@ -161,88 +150,92 @@ class SkinRegionService:
         )
 
         return {
-            "brightness": round(
-                brightness,
-                2,
-            ),
-
-            "contrast": round(
-                contrast,
-                2,
-            ),
-
-            "sharpness": round(
-                laplacian_variance,
-                2,
-            ),
-
-            "overexposed_percentage": round(
-                overexposed,
-                2,
-            ),
-
-            "underexposed_percentage": round(
-                underexposed,
-                2,
-            ),
-
+            "brightness": round(brightness, 2),
+            "contrast": round(contrast, 2),
+            "sharpness": round(laplacian_variance, 2),
+            "overexposed_percentage": round(overexposed, 2),
+            "underexposed_percentage": round(underexposed, 2),
             "lighting_status": lighting_status,
-
             "focus_status": focus_status,
-
             "usable": usable,
         }
 
-    def _get_region_lighting(
+    def _analyze_patch_metrics(
         self,
-        patch,
-    ):
+        patch_bgr: np.ndarray,
+        reference_skin_erythema: float = 0.12,
+    ) -> Dict[str, Any]:
         """
-        Region-level lighting analysis.
-
-        We deliberately do NOT calculate blur here
-        because smooth skin produces artificially low
-        Laplacian scores.
+        Compute deep cosmetic signals from a region patch:
+        - shine_index: High-luminance specular highlights indicative of sebum/oiliness
+        - erythema_index: Normalized hemoglobin/redness signal: (R - G) / (R + G + 1e-5)
+        - texture_roughness: High-frequency texture and surface roughness
+        - melanin_contrast: Localized standard deviation in luminance
         """
-
-        if patch.size == 0:
+        if patch_bgr.size == 0:
             return {
                 "brightness": 0.0,
                 "lighting_status": "invalid",
+                "shine_index": 0.0,
+                "erythema_index": 0.0,
+                "texture_roughness": 0.0,
+                "melanin_contrast": 0.0,
             }
 
-        gray = cv2.cvtColor(
-            patch,
-            cv2.COLOR_BGR2GRAY,
-        )
+        gray = cv2.cvtColor(patch_bgr, cv2.COLOR_BGR2GRAY)
+        brightness = float(np.mean(gray))
 
-        brightness = float(
-            np.mean(gray)
-        )
-
-        if brightness < 55:
+        if brightness < 50:
             status = "too_dark"
-
-        elif brightness > 220:
+        elif brightness > 225:
             status = "too_bright"
-
         else:
             status = "acceptable"
 
-        return {
-            "brightness": round(
-                brightness,
-                2,
-            ),
+        # 1. Specular Shine / Sebum Index
+        # Calculate percentage of pixels approaching high-luminance specular threshold (> 210)
+        # and ratio of 95th percentile luminance to median luminance
+        p95 = float(np.percentile(gray, 95))
+        p50 = max(float(np.median(gray)), 1.0)
+        specular_ratio = (p95 - p50) / 255.0
+        high_spec_pct = float(np.mean(gray >= 210))
+        shine_index = float(np.clip((specular_ratio * 0.7) + (high_spec_pct * 3.0), 0.0, 1.0))
 
+        # 2. Erythema / Redness Index
+        # BGR channels
+        b = patch_bgr[:, :, 0].astype(np.float64)
+        g = patch_bgr[:, :, 1].astype(np.float64)
+        r = patch_bgr[:, :, 2].astype(np.float64)
+
+        # Normalized difference index (R - G) / (R + G + 1e-5)
+        rg_diff = (r - g) / (r + g + 1e-5)
+        raw_erythema = float(np.mean(rg_diff))
+        # Differential erythema relative to normal facial baseline
+        erythema_index = float(np.clip((raw_erythema - 0.08) * 3.5, 0.0, 1.0))
+
+        # 3. Texture / Roughness Index
+        # High-frequency variance using Laplacian
+        lap_var = float(cv2.Laplacian(gray, cv2.CV_64F).var())
+        # Normalized texture scale
+        texture_roughness = float(np.clip(lap_var / 120.0, 0.0, 1.0))
+
+        # 4. Melanin / Contrast Variance (Spots & unevenness)
+        melanin_contrast = float(np.clip(np.std(gray) / 45.0, 0.0, 1.0))
+
+        return {
+            "brightness": round(brightness, 2),
             "lighting_status": status,
+            "shine_index": round(shine_index, 3),
+            "erythema_index": round(erythema_index, 3),
+            "texture_roughness": round(texture_roughness, 3),
+            "melanin_contrast": round(melanin_contrast, 3),
         }
 
     def extract(
         self,
-        image,
-        landmarks,
-    ):
+        image: np.ndarray,
+        landmarks: List[Any],
+    ) -> Dict[str, Any]:
         image_height, image_width = image.shape[:2]
 
         (
@@ -256,130 +249,84 @@ class SkinRegionService:
             image_height,
         )
 
-        face_width = max(
-            1,
-            face_x2 - face_x1,
-        )
+        face_width = max(1, face_x2 - face_x1)
+        face_height = max(1, face_y2 - face_y1)
 
-        face_height = max(
-            1,
-            face_y2 - face_y1,
-        )
-
-        face_crop = image[
-            face_y1:face_y2,
-            face_x1:face_x2,
-        ]
-
-        capture_quality = (
-            self._calculate_capture_quality(
-                face_crop
-            )
-        )
+        face_crop = image[face_y1:face_y2, face_x1:face_x2]
+        capture_quality = self._calculate_capture_quality(face_crop)
 
         regions = {}
+        tzone_shines = []
+        uzone_shines = []
+        all_erythema = []
+        all_textures = []
 
         for region_name, config in self.REGION_CONFIG.items():
-
             anchor_index = config["anchor"]
+            if anchor_index >= len(landmarks):
+                continue
 
-            anchor = landmarks[
-                anchor_index
-            ]
+            anchor = landmarks[anchor_index]
+            center_x = int(anchor.x * image_width)
+            center_y = int(anchor.y * image_height)
 
-            center_x = int(
-                anchor.x * image_width
-            )
+            center_x += int(config["x_offset"] * face_width)
+            center_y += int(config["y_offset"] * face_height)
 
-            center_y = int(
-                anchor.y * image_height
-            )
+            region_width = int(config["width"] * face_width)
+            region_height = int(config["height"] * face_height)
 
-            center_x += int(
-                config["x_offset"]
-                * face_width
-            )
+            x1 = max(0, int(center_x - region_width / 2))
+            y1 = max(0, int(center_y - region_height / 2))
+            x2 = min(image_width, int(center_x + region_width / 2))
+            y2 = min(image_height, int(center_y + region_height / 2))
 
-            center_y += int(
-                config["y_offset"]
-                * face_height
-            )
+            patch = image[y1:y2, x1:x2]
+            metrics = self._analyze_patch_metrics(patch)
 
-            region_width = int(
-                config["width"]
-                * face_width
-            )
+            zone = config.get("zone", "other")
+            if zone == "tzone":
+                tzone_shines.append(metrics["shine_index"])
+            elif zone == "uzone":
+                uzone_shines.append(metrics["shine_index"])
 
-            region_height = int(
-                config["height"]
-                * face_height
-            )
+            all_erythema.append((region_name, metrics["erythema_index"]))
+            all_textures.append(metrics["texture_roughness"])
 
-            x1 = int(
-                center_x
-                - region_width / 2
-            )
-
-            y1 = int(
-                center_y
-                - region_height / 2
-            )
-
-            x2 = int(
-                center_x
-                + region_width / 2
-            )
-
-            y2 = int(
-                center_y
-                + region_height / 2
-            )
-
-            x1 = max(
-                0,
-                min(image_width - 1, x1),
-            )
-
-            y1 = max(
-                0,
-                min(image_height - 1, y1),
-            )
-
-            x2 = max(
-                x1 + 1,
-                min(image_width, x2),
-            )
-
-            y2 = max(
-                y1 + 1,
-                min(image_height, y2),
-            )
-
-            patch = image[
-                y1:y2,
-                x1:x2,
-            ]
-
-            region_lighting = (
-                self._get_region_lighting(
-                    patch
-                )
-            )
-
-            regions[
-                region_name
-            ] = {
+            regions[region_name] = {
                 "anchor_landmark": anchor_index,
-
+                "zone": zone,
                 "bounding_box": {
                     "x": x1,
                     "y": y1,
                     "width": x2 - x1,
                     "height": y2 - y1,
                 },
-
-                "quality": region_lighting,
+                "quality": {
+                    "brightness": metrics["brightness"],
+                    "lighting_status": metrics["lighting_status"],
+                },
+                "metrics": metrics,
             }
+
+        # Compute regional summary for skin-type and concern calibration
+        avg_tzone_shine = float(np.mean(tzone_shines)) if tzone_shines else 0.0
+        avg_uzone_shine = float(np.mean(uzone_shines)) if uzone_shines else 0.0
+        shine_divergence = max(0.0, avg_tzone_shine - avg_uzone_shine)
+
+        all_erythema.sort(key=lambda x: x[1], reverse=True)
+        max_erythema_region = all_erythema[0][0] if all_erythema else "none"
+        avg_erythema = float(np.mean([x[1] for x in all_erythema])) if all_erythema else 0.0
+        avg_texture = float(np.mean(all_textures)) if all_textures else 0.0
+
+        regional_summary = {
+            "tzone_shine_index": round(avg_tzone_shine, 3),
+            "uzone_shine_index": round(avg_uzone_shine, 3),
+            "shine_divergence": round(shine_divergence, 3),
+            "average_erythema_index": round(avg_erythema, 3),
+            "max_erythema_region": max_erythema_region,
+            "average_texture_roughness": round(avg_texture, 3),
+        }
 
         return {
             "face_bounding_box": {
@@ -388,40 +335,24 @@ class SkinRegionService:
                 "width": face_x2 - face_x1,
                 "height": face_y2 - face_y1,
             },
-
             "capture_quality": capture_quality,
-
             "regions": regions,
+            "regional_summary": regional_summary,
         }
 
     def annotate(
         self,
-        image,
-        regions_result,
-    ):
+        image: np.ndarray,
+        regions_result: Dict[str, Any],
+    ) -> np.ndarray:
         annotated = image.copy()
 
-        for region_name, region in (
-            regions_result[
-                "regions"
-            ].items()
-        ):
-            box = region[
-                "bounding_box"
-            ]
-
+        for region_name, region in regions_result["regions"].items():
+            box = region["bounding_box"]
             x1 = box["x"]
             y1 = box["y"]
-
-            x2 = (
-                x1
-                + box["width"]
-            )
-
-            y2 = (
-                y1
-                + box["height"]
-            )
+            x2 = x1 + box["width"]
+            y2 = y1 + box["height"]
 
             cv2.rectangle(
                 annotated,
@@ -434,12 +365,9 @@ class SkinRegionService:
             cv2.putText(
                 annotated,
                 region_name,
-                (
-                    x1,
-                    max(20, y1 - 8),
-                ),
+                (x1, max(20, y1 - 8)),
                 cv2.FONT_HERSHEY_SIMPLEX,
-                0.6,
+                0.55,
                 (255, 255, 255),
                 2,
                 cv2.LINE_AA,
